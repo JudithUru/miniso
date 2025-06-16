@@ -9,7 +9,7 @@ class Pedido extends Model
     protected $table = 'pedidos';
 
     protected $fillable = [
-        'cliente_id', 'total', 'fecha'
+        'cliente_id', 'total', 'fecha', 'estado', 'metodo_pago'
     ];
 
     public function cliente()
