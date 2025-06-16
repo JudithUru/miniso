@@ -8,59 +8,45 @@ use Illuminate\Support\Facades\DB;
 
 class PedidoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // Mostrar lista de pedidos
     public function index()
     {
-        //
+        $pedidos = Pedido::with('productos')->get();
+        return view('pedidos.index', compact('pedidos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Mostrar formulario para crear un nuevo pedido
     public function create()
     {
-        //
+        return view('pedidos.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Guardar un nuevo pedido
     public function store(Request $request)
     {
-        //
+        $pedido = new Pedido();
+        $pedido->cliente_id = $request->cliente_id; // ajusta si usas clientes
+        $pedido->total = 0;
+        $pedido->save();
+
+        return redirect()->route('pedidos.show', $pedido)->with('success', 'Pedido creado');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    // Mostrar un pedido específico
     public function show(Pedido $pedido)
     {
-        //
+        $productos = Producto::all(); // para mostrar productos disponibles en el formulario
+        $pedido->load('productos');
+
+        return view('pedidos.show', compact('pedido', 'productos'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Pedido $pedido)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Pedido $pedido)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
+    // Eliminar un pedido
     public function destroy(Pedido $pedido)
     {
-        //
+        $pedido->productos()->detach(); // primero quitamos los productos relacionados
+        $pedido->delete();
+
+        return redirect()->route('pedidos.index')->with('success', 'Pedido eliminado');
     }
 }
