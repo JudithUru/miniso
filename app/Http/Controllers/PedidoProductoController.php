@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class PedidoProductoController extends Controller
 {
-     // Agregar producto a pedido
     public function store(Request $request, $pedidoId)
     {
         $request->validate([
@@ -20,15 +19,24 @@ class PedidoProductoController extends Controller
         $pedido = Pedido::findOrFail($pedidoId);
         $producto = Producto::findOrFail($request->producto_id);
 
-        // Agregar o actualizar pivot
+        // Validación adicional: estado del producto
+        if ($producto->estado === 'Agotado' || $producto->estado === 'No Disponible') {
+            return back()->with('error', 'Este producto no se puede agregar porque está agotado o no disponible.');
+        }
+
+        // Agregar o actualizar el producto en el pedido
         $pedido->productos()->syncWithoutDetaching([
-            $producto->id => ['cantidad' => $request->cantidad, 'precio_unitario' => $producto->precio]
+            $producto->id => [
+                'cantidad' => $request->cantidad,
+                'precio_unitario' => $producto->precio
+            ]
         ]);
 
-        // Actualizar total del pedido
+        // Recalcular el total del pedido
         $total = $pedido->productos->sum(function ($p) {
             return $p->pivot->cantidad * $p->pivot->precio_unitario;
         });
+
         $pedido->total = $total;
         $pedido->save();
 
