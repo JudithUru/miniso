@@ -36,7 +36,11 @@ Route::prefix('caja')->group(function () {
 
 });
 
-// Rutas AJAX para manejar productos en el pedido
-Route::post('/pedidos/{pedido}/productos', [PedidoProductoController::class, 'store']);
-Route::put('/pedidos/{pedido}/productos/{producto}', [PedidoProductoController::class, 'update']);
-Route::delete('/pedidos/{pedido}/productos/{producto}', [PedidoProductoController::class, 'destroy']);
+Route::get('/caja/cliente/{cliente}', [CajaController::class, 'verPedidosCliente'])->name('caja.verPedidosCliente');
+
+// Route::delete('/caja/cancelar-pedido/{pedido}', [CajaController::class, 'cancelarPedido'])->name('caja.cancelarPedido');
+
+// // Rutas AJAX para manejar productos en el pedido
+// Route::post('/pedidos/{pedido}/productos', [PedidoProductoController::class, 'store']);
+// Route::put('/pedidos/{pedido}/productos/{producto}', [PedidoProductoController::class, 'update']);
+// Route::delete('/pedidos/{pedido}/productos/{producto}', [PedidoProductoController::class, 'destroy']);

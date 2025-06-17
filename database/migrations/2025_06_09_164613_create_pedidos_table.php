@@ -16,6 +16,10 @@ return new class extends Migration
             $table->foreignId('cliente_id')->constrained()->onDelete('cascade');
             $table->decimal('total', 10, 2);
             $table->date('fecha');
+            $table->enum('estado', ['Pendiente', 'Finalizado'])->default('Pendiente');
+            $table->enum('metodo_pago', [
+                'Efectivo', 'Tarjeta de débito', 'Transferencia'
+            ]);
             $table->timestamps();
         });
     }
