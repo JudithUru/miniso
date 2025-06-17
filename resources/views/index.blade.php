@@ -48,6 +48,38 @@
             object-fit: contain;
             display: block;
         }
+
+.boton-rojo {
+    background-color: #d7282f !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.boton-rojo:hover {
+    background-color: #b71f27 !important; /* Un rojo más oscuro al pasar el mouse */
+    color: white !important;
+}
+
+.boton-rojo:focus, .boton-rojo:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.nav-activo {
+    background-color:rgb(183, 0, 0);
+    border-radius: 0.5rem;
+}
+
+.hover-nav:hover {
+    background-color: #e6e6e6 !important;
+    border-radius: 0.5rem;
+}
+
+
+
+
+
     </style>
 </head>
 
@@ -63,7 +95,7 @@
                 <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                     <li>
                         <a href="/" class="nav-link text-secondary text-white fw-bold text-center">
-                            <i class="bi bi-house-fill mb-1" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
+                            <i class="bi bi-house-fill mb-1 nav-activo" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
                             Home
                         </a>
 
@@ -111,32 +143,32 @@
                 <hr />
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active" aria-current="page">
+                        <a href="#" class="nav-link active color-rojo1" aria-current="page">
                             <i class="bi bi-house-fill me-2" width="16" height="16" aria-hidden="true"></i>
                             Home
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link link-body-emphasis">
+                        <a href="#" class="nav-link link-body-emphasis hover-nav">
                             <i class="bi bi-bar-chart-fill me-2" width="16" height="16" aria-hidden="true">
                             </i>
                             Dashboard
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('caja.seleccionarCliente') }}" class="nav-link link-body-emphasis">
+                        <a href="{{ route('caja.seleccionarCliente') }}" class="nav-link link-body-emphasis hover-nav">
                             <i class="bi bi-cart-fill me-2" width="16" height="16" aria-hidden="true"></i>
                             Pedidos
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('productos.index') }}" class="nav-link link-body-emphasis">
+                        <a href="{{route('productos.index') }}" class="nav-link link-body-emphasis hover-nav">
                             <i class="bi bi-grid-fill me-2" width="16" height="16" aria-hidden="true"></i>
                             Productos
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('clientes.index') }}" class="nav-link link-body-emphasis">
+                        <a href="{{ route('clientes.index') }}" class="nav-link link-body-emphasis hover-nav">
                             <i class="bi bi-person-circle me-2" width="16" height="16" aria-hidden="true"></i>
                             Clientes
                         </a>
@@ -163,7 +195,7 @@
                                 para mantener tus datos organizados y actualizados.
                             </p>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">
+                                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 boton-rojo">
                                     Primary
                                 </button>
                                 <button type="button" class="btn btn-outline-secondary btn-lg px-4">
@@ -189,7 +221,7 @@
                                     Crea y visualiza órdenes. No se pueden editar ni borrar para
                                     mantener la integridad de los registros.
                                 </p>
-                                <a href="{{ route('caja.seleccionarCliente') }}" class="btn btn-primary">Primary button</a>
+                                <a href="{{ route('caja.seleccionarCliente') }}" class="btn btn-primary boton-rojo">Ir a Pedidos</a>
                             </div>
                         </div>
                         <div class="col d-flex align-items-start">
@@ -203,7 +235,7 @@
                                     Puedes añadir, modificar y eliminar clientes para mantener
                                     tu base actualizada.
                                 </p>
-                                <a href="{{ route('clientes.index') }}" class="btn btn-primary">Primary button</a>
+                                <a href="{{ route('clientes.index') }}" class="btn btn-primary boton-rojo">Ir a Clientes</a>
                             </div>
                         </div>
                         <div class="col d-flex align-items-start">
@@ -216,7 +248,7 @@
                                 <p>
                                     Agrega, edita y elimina productos para mantener tu catálogo actualizado y ofrecer lo mejor.
                                 </p>
-                                <a href="{{route('productos.index') }}" class="btn btn-primary">Primary button</a>
+                                <a href="{{route('productos.index') }}" class="btn btn-primary boton-rojo">Ir a Productos</a>
                             </div>
                         </div>
                     </div>
@@ -231,7 +263,7 @@
                         <a href="/" class="d-flex align-items-center my-2 my-lg-0 text-white text-decoration-none">
                             <img src="https://victoriaplace.co.uk/wp-content/uploads/2024/12/white-and-black-logo@1080x-871x1024.png" height="40" />
                         </a>
-                    <span class="ms-3 text-body-secondary color-textoblanco">© 2025 Company, Inc</span>
+                    <span class="ms-3 text-body-secondary color-textoblanco">© 2025 Miniso Manager, Inc.</span>
                     </div>
 
                 </footer>
