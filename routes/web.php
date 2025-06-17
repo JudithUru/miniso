@@ -9,7 +9,7 @@ use App\Http\Controllers\CajaController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 
