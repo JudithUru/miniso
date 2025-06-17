@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Index</title>
+    <title>Miniso Manger</title>
 
     <script src="assets/js/color-modes.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Miniso_logo.svg/1648px-Miniso_logo.svg.png" type="image/png">
 
     <style>
         body {
@@ -61,7 +62,7 @@
                 </a>
                 <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                     <li>
-                        <a href="#" class="nav-link text-secondary text-white fw-bold text-center">
+                        <a href="/" class="nav-link text-secondary text-white fw-bold text-center">
                             <i class="bi bi-house-fill mb-1" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
                             Home
                         </a>
@@ -74,20 +75,20 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link text-secondary text-white text-center">
+                        <a href="{{ route('caja.seleccionarCliente') }}" class="nav-link text-secondary text-white text-center">
                             <i class="bi bi-cart-fill mb-1" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
                             </i>
                             Pedidos
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link text-secondary text-white text-center">
+                        <a href="{{route('productos.index') }}" class="nav-link text-secondary text-white text-center">
                             <i class="bi bi-grid-fill mb-1" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
                             Productos
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link text-secondary text-white text-center">
+                        <a href="{{ route('clientes.index') }}" class="nav-link text-secondary text-white text-center">
                             <i class="bi bi-person-circle mb-1" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
                             Clientes
                         </a>
@@ -102,7 +103,7 @@
         <div class="row">
             <!-- Sidebar -->
             <nav class="col-md-2 sidebar d-flex flex-column p-3 color-grisclaro" aria-label="Sidebar menu">
-                <a href="/"
+                <a
                     class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                     <i class="bi bi-list me-2" width="40" height="32" aria-hidden="true"></i>
                     <span class="fs-4 fw-semibold">Menu</span>
@@ -123,19 +124,19 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link link-body-emphasis">
+                        <a href="{{ route('caja.seleccionarCliente') }}" class="nav-link link-body-emphasis">
                             <i class="bi bi-cart-fill me-2" width="16" height="16" aria-hidden="true"></i>
                             Pedidos
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link link-body-emphasis">
+                        <a href="{{route('productos.index') }}" class="nav-link link-body-emphasis">
                             <i class="bi bi-grid-fill me-2" width="16" height="16" aria-hidden="true"></i>
                             Productos
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link link-body-emphasis">
+                        <a href="{{ route('clientes.index') }}" class="nav-link link-body-emphasis">
                             <i class="bi bi-person-circle me-2" width="16" height="16" aria-hidden="true"></i>
                             Clientes
                         </a>
@@ -149,7 +150,8 @@
                 <div class="container py-5 px-4 px-lg-5">
                     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
                         <div class="col-10 col-sm-8 col-lg-6 hero-img-container">
-                            <img src="https://media.fashionnetwork.com/cdn-cgi/image/format=auto/m/6c67/7cb7/5ca2/01bc/1237/57f4/623c/d32d/aa4b/4e53/4e53.jpg" alt="Fondo" />
+                            <!-- <img src="https://media.fashionnetwork.com/cdn-cgi/image/format=auto/m/6c67/7cb7/5ca2/01bc/1237/57f4/623c/d32d/aa4b/4e53/4e53.jpg" alt="Fondo" /> -->
+                            <img src="{{ asset('images/fondo.jpg') }}" alt="Fondo" />
                         </div>
                         <div class="col-lg-6">
                             <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
@@ -187,7 +189,7 @@
                                     Crea y visualiza órdenes. No se pueden editar ni borrar para
                                     mantener la integridad de los registros.
                                 </p>
-                                <a href="#" class="btn btn-primary">Primary button</a>
+                                <a href="{{ route('caja.seleccionarCliente') }}" class="btn btn-primary">Primary button</a>
                             </div>
                         </div>
                         <div class="col d-flex align-items-start">
@@ -201,7 +203,7 @@
                                     Puedes añadir, modificar y eliminar clientes para mantener
                                     tu base actualizada.
                                 </p>
-                                <a href="#" class="btn btn-primary">Primary button</a>
+                                <a href="{{ route('clientes.index') }}" class="btn btn-primary">Primary button</a>
                             </div>
                         </div>
                         <div class="col d-flex align-items-start">
@@ -214,7 +216,7 @@
                                 <p>
                                     Agrega, edita y elimina productos para mantener tu catálogo actualizado y ofrecer lo mejor.
                                 </p>
-                                <a href="#" class="btn btn-primary">Primary button</a>
+                                <a href="{{route('productos.index') }}" class="btn btn-primary">Primary button</a>
                             </div>
                         </div>
                     </div>
@@ -229,7 +231,7 @@
                         <a href="/" class="d-flex align-items-center my-2 my-lg-0 text-white text-decoration-none">
                             <img src="https://victoriaplace.co.uk/wp-content/uploads/2024/12/white-and-black-logo@1080x-871x1024.png" height="40" />
                         </a>
-                    <span class="ms-3 text-body-secondary color-textoblanco">© 2023 Company, Inc</span>
+                    <span class="ms-3 text-body-secondary color-textoblanco">© 2025 Company, Inc</span>
                     </div>
 
                 </footer>
@@ -239,7 +241,7 @@
 
             <!-- SVG symbols -->
             <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-              
+
                 <symbol id="speedometer2" viewBox="0 0 16 16">
                     <path
                         d="M8 4a.5.5 0 0 1 .5.5v3.707l2.349 1.175a.5.5 0 1 1-.448.894l-2.5-1.25A.5.5 0 0 1 7.5 8V4.5A.5.5 0 0 1 8 4z" />
