@@ -6,7 +6,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\PedidoProductoController;
 use App\Http\Controllers\CajaController;
-
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -40,3 +40,11 @@ Route::prefix('caja')->group(function () {
 Route::post('/pedidos/{pedido}/productos', [PedidoProductoController::class, 'store']);
 Route::put('/pedidos/{pedido}/productos/{producto}', [PedidoProductoController::class, 'update']);
 Route::delete('/pedidos/{pedido}/productos/{producto}', [PedidoProductoController::class, 'destroy']);
+
+//marto
+//Route::get('/api/recomendar', [ProductoController::class, 'recomendar']);
+//Route::get('/api/dashboard-resumen', [ProductoController::class, 'dashboardResumen']);
+Route::get('/api/gestion-resumen', [ProductoController::class, 'gestionResumen']);
+//Route::get('/dashboard', [DashboardController::class, 'index']);
+//Route::get('/dashboard-data', [DashboardController::class, 'getDashboardData']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

@@ -1,0 +1,73 @@
+.overview-box {
+    padding: 30px;
+    border-radius: 10px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.bg-gradient-1 {
+    background: linear-gradient(to bottom right, #ff416c, #ff4b2b);
+}
+
+.bg-gradient-2 {
+    background: linear-gradient(to bottom right, #28d8a1, #0fcf7f);
+}
+
+.bg-gradient-3 {
+    background: linear-gradient(to bottom right, #fc6076, #ff9a44);
+}
+
+.bg-gradient-4 {
+    background: linear-gradient(to bottom right, #a8e063, #56ab2f);
+}
+
+.overview-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.overview-number {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.overview-label {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+
+.card-modern {
+    border-radius: 12px;
+    background: #fff;
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.card-modern h3 {
+    font-size: 24px;
+    color: #333;
+}
+
+.card-modern h6 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-modern .text-success {
+    font-size: 14px;
+}
+
+.legend-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+
+
