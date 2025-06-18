@@ -16,7 +16,7 @@
 </div>
 
     <div class="card-body" style="background-color: #fdfdfd; font-size: 14px;">
-        <p>👋 <strong>Hola, guapo</strong><br>Este es tu resumen de hoy:</p>
+        <p>👋 <strong>Hola, guap@</strong><br>Este es tu resumen de hoy:</p>
 
         <hr>
         <p class="mb-1"><strong>📦 Inventario:</strong></p>
@@ -75,7 +75,7 @@ fetch('/api/gestion-resumen')
     btn.onclick = () => {
         box.style.display = box.style.display === "none" ? "block" : "none";
 
-        // ✅ Trae el resumen de gestión
+    
         fetch('/api/gestion-resumen')
             .then(res => res.json())
             .then(data => {
@@ -85,7 +85,7 @@ fetch('/api/gestion-resumen')
                 document.getElementById("pedidosHoy").innerText = data.pedidosHoy;
                 document.getElementById("pedidosPendientes").innerText = data.pedidosPendientes;
 
-                // ✅ También actualiza el gráfico (opcional si quieres redibujarlo)
+                
                 new Chart(document.getElementById("graficoInventario"), {
                     type: 'doughnut',
                     data: {
@@ -101,7 +101,7 @@ fetch('/api/gestion-resumen')
                 });
             });
 
-        // ✅ También carga tareas
+      
         cargarTareas();
     };
     

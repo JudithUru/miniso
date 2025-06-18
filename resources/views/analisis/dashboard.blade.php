@@ -34,7 +34,7 @@
             <div class="card card-modern shadow-sm p-3">
                 <h6 class="text-muted mb-2">Top 5 productos más vendidos</h6>
                 <div>
-                    <canvas id="graficoTopProductos" height="100"></canvas>
+                    <canvas id="graficoTopProductos" height="150"></canvas>
                 </div>
             </div>
         </div>
@@ -81,7 +81,13 @@
             labels: productos.map(p => p.nombre),
             datasets: [{
                 data: productos.map(p => p.total_vendidos),
-                backgroundColor: 'rgba(255, 159, 64, 0.7)',
+                backgroundColor: [
+  '#d72828',
+  '#e33434',
+  '#f04747',
+  '#ff5c5c',
+  '#ff7777'
+],
                 borderRadius: 6,
                 barThickness: 20
             }]
@@ -130,8 +136,8 @@
                 label: 'Ingresos ($)',
                 data: ingresos.map(i => i.total),
                 fill: true,
-                borderColor: '#fd7e14',
-                backgroundColor: 'rgba(253,126,20,0.2)',
+            borderColor: '#e52d27',
+            backgroundColor: 'rgba(229, 45, 39, 0.2)',
                 tension: 0.3
             }]
         },

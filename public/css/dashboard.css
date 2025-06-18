@@ -9,11 +9,11 @@
 }
 
 .bg-gradient-1 {
-    background: linear-gradient(to bottom right, #ff416c, #ff4b2b);
+    background: linear-gradient(to bottom right, #d72828, #ff5e5e);
 }
 
 .bg-gradient-2 {
-    background: linear-gradient(to bottom right, #28d8a1, #0fcf7f);
+    background: linear-gradient(to bottom right, #b31217, #e52d27);
 }
 
 .bg-gradient-3 {
@@ -21,7 +21,7 @@
 }
 
 .bg-gradient-4 {
-    background: linear-gradient(to bottom right, #a8e063, #56ab2f);
+    background: linear-gradient(to bottom right, #8B0000, #B22222);
 }
 
 .overview-icon {
