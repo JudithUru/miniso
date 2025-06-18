@@ -44,6 +44,10 @@ class PedidoController extends Controller
     // Eliminar un pedido
     public function destroy(Pedido $pedido)
     {
+        if ($pedido->estado === 'Finalizado') {
+            return back()->with('error', 'No se puede eliminar un pedido que ya ha sido finalizado.');
+        }
+
         $pedido->productos()->detach(); // primero quitamos los productos relacionados
         $pedido->delete();
 

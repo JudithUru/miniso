@@ -18,8 +18,10 @@ return new class extends Migration
             $table->date('fecha');
             $table->enum('estado', ['Pendiente', 'Finalizado'])->default('Pendiente');
             $table->enum('metodo_pago', [
-                'Efectivo', 'Tarjeta de débito', 'Transferencia'
+                'Efectivo', 'Tarjeta', 'Transferencia'
             ]);
+            $table->decimal('monto_entregado', 10, 2)->nullable();
+            $table->decimal('cambio', 10, 2)->nullable();
             $table->timestamps();
         });
     }
