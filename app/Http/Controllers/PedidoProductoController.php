@@ -20,6 +20,9 @@ class PedidoProductoController extends Controller
             ],
         ]);
         $pedido = Pedido::findOrFail($pedidoId);
+        if ($pedido->estado === 'Finalizado') {
+            return back()->with('error', 'No se puede modificar un pedido que ya ha sido finalizado.');
+        }
         $producto = Producto::findOrFail($request->producto_id);
 
         // Validación adicional: estado del producto
@@ -67,6 +70,10 @@ class PedidoProductoController extends Controller
         ]);
 
         $pedido = Pedido::findOrFail($pedidoId);
+        if ($pedido->estado === 'Finalizado') {
+            return back()->with('error', 'No se puede editar un pedido que ya ha sido finalizado.');
+        }
+
         $producto = Producto::findOrFail($productoId);
 
         if (!$pedido->productos()->where('producto_id', $productoId)->exists()) {
@@ -105,6 +112,9 @@ class PedidoProductoController extends Controller
     public function destroy($pedidoId, $productoId)
     {
         $pedido = Pedido::findOrFail($pedidoId);
+        if ($pedido->estado === 'Finalizado') {
+            return back()->with('error', 'No se puede eliminar productos de un pedido finalizado.');
+        }
         $producto = Producto::findOrFail($productoId);
         // Obtener la cantidad antes de eliminar
         
