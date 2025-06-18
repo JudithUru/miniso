@@ -17,9 +17,9 @@
             body {
                 font-family: 'Poppins', Arial, sans-serif;
             }
-            main{
+            /* main{
                 height: 100vh;
-            }
+            } */
 
             .color-rojo1 {
                 background-color: #d7282f !important;
@@ -176,7 +176,7 @@
             </nav>
 
         
-          <main class="col-md-10 d-flex flex-column px-3 px-lg-10" style="height: 100vh; overflow-y: auto;">
+            <main class="col-md-10 d-flex flex-column px-3 px-lg-10" style="height: 100vh; overflow-y: auto;">
                 <div class="container px-4 px-lg-5 mt-5 flex-grow-1 d-flex flex-column justify-content-between">
                     
                     <!-- Encabezado -->
@@ -274,29 +274,37 @@
                     </div>
 
                     <!-- Finalizar pedido -->
-                    <div class="flex-grow-1 overflow-auto">
+                    <div class="flex-grow-1 ">
                         <form action="{{ route('caja.finalizarPedido', $pedido->id) }}" method="POST" onsubmit="return confirm('¿Deseas finalizar este pedido?');">
                             @csrf
-                            <div class="d-flex align-items-center gap-2 mb-3">
-                                <h5 for="metodo_pago">Método de Pago:</h5>
-                                <select name="metodo_pago" class="form-control" style="max-width: 250px;" required>
-                                    <option value="">Seleccione</option>
-                                    <option value="Efectivo">Efectivo</option>
-                                    <option value="Tarjeta">Tarjeta</option>
-                                    <option value="Transferencia">Transferencia</option>
-                                </select>
+
+                            <div class="row mb-3">
+                                <!-- Método de Pago -->
+                                <div class="col-md-4">
+                                    <label for="metodo_pago" class="form-label">Método de Pago:</label>
+                                    <select name="metodo_pago" class="form-control" required>
+                                        <option value="">Seleccione</option>
+                                        <option value="Efectivo">Efectivo</option>
+                                        <option value="Tarjeta">Tarjeta</option>
+                                        <option value="Transferencia">Transferencia</option>
+                                    </select>
+                                </div>
+
+                                <!-- Monto entregado -->
+                                <div class="col-md-4">
+                                    <label for="monto_entregado" class="form-label">Monto Entregado:</label>
+                                    <input type="number" step="0.01" min="0" class="form-control" id="monto_entregado" name="monto_entregado" required value="0" >
+                                </div>
+
+                                <!-- Cambio calculado -->
+                                <div class="col-md-4">
+                                    <label for="cambio_mostrado" class="form-label">Cambio:</label>
+                                    <input type="text" class="form-control" id="cambio_mostrado" readonly>
+                                </div>
                             </div>
-                            <!-- Monto entregado -->
-                            <div class="d-flex align-items-center gap-2 mb-3">
-                                <h6 for="monto_entregado">Monto entregado:</h6>
-                                <input type="number" step="0.01" min="0" class="form-control" id="monto_entregado" name="monto_entregado" required>
 
-                            <!-- Cambio calculado -->
-                                <h6 for="cambio">Cambio:</h6>
-                                <input type="text" class="form-control" id="cambio_mostrado" readonly>
-        </div>
 
-                            <div class="text-center mt-3 mb-5">
+                            <div class="text-center mt-5 mb-5">
                                 <button type="submit" class="btn btn-success px-5">
                                     Finalizar Pedido
                                 </button>
@@ -304,13 +312,15 @@
                         </form>
                     </div>
 
+
                 </div>
             </main>
-
+    </div>
+</div>
 
             <!-- FOOTER -->
-            <div class="container color-rojo1">
-                <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top ">
+            <div class=" color-rojo1">
+                <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top px-0">
                     <div class="col-md-4 ms-4 d-flex align-items-center my-1">
                         <a href="/" class="d-flex align-items-center my-2 my-lg-0 text-white text-decoration-none">
                             <img src="https://victoriaplace.co.uk/wp-content/uploads/2024/12/white-and-black-logo@1080x-871x1024.png" height="40" />
