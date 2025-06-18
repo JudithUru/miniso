@@ -44,7 +44,7 @@ public function gestionResumen()
         ->count();
 
     $pedidosPendientes = DB::table('pedidos')
-        ->where('total', '>', 0) // cambia esto si tienes un campo "estado"
+        ->where('total', '>', 0) 
         ->count();
 
     return response()->json([
