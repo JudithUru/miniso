@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Miniso Manger</title>
+    <title>Clientes</title>
 
     <script src="assets/js/color-modes.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
@@ -191,7 +191,7 @@
     @endif
 
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <a href="{{ route('clientes.create') }}" class="btn btn-primary">
+        <a href="{{ route('clientes.create') }}" class="btn btn-primary boton-rojo me-md-2 boton-rojo">
             <i class="bi bi-person-plus-fill"></i> Nuevo Cliente
         </a>
         <span class="text-muted">Total: {{ $clientes->count() }} clientes</span>

@@ -182,12 +182,12 @@
             <main class="col-md-10 overflow-auto">
             <div class="container px-4 px-lg-5 mt-5 flex-grow-1 d-flex flex-column justify-content-between">
                 
-                <h2>Pedidos del Cliente: {{ $cliente->nombre_cliente }}</h2>
+                <h2>🛒 Pedidos del Cliente: {{ $cliente->nombre_cliente }}</h2>
                 
                 
                 <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-3">
                     <a href="{{ route('caja.seleccionarCliente') }}" class="btn btn-primary boton-rojo">
-                        ← Volver a Inicio Pedidos
+                        ⬅ Volver a Inicio Pedidos
                     </a>
 
                     <form method="GET" class="d-flex align-items-center gap-3 flex-wrap">

@@ -194,14 +194,14 @@
                                 clientes, órdenes y productos fácilmente. Realiza operaciones CRUD
                                 para mantener tus datos organizados y actualizados.
                             </p>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                            <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                                 <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 boton-rojo">
                                     Primary
                                 </button>
                                 <button type="button" class="btn btn-outline-secondary btn-lg px-4">
                                     Default
                                 </button>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
