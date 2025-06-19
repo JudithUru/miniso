@@ -17,8 +17,11 @@
             body {
                 font-family: 'Poppins', Arial, sans-serif;
             }
-            main{
-                height: 100vh;
+            
+            main {
+                min-height: calc(100vh - 178px);
+                padding-top: 2rem;
+                padding-bottom: 2rem;
             }
 
             .color-rojo1 {
@@ -92,8 +95,8 @@
                 </a>
                 <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                     <li>
-                        <a href="/" class="nav-link text-secondary text-white fw-bold text-center">
-                            <i class="bi bi-house-fill mb-1 nav-activo" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
+                        <a href="/" class="nav-link text-secondary text-white text-center">
+                            <i class="bi bi-house-fill mb-1" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
                             Home
                         </a>
 
@@ -105,8 +108,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('caja.seleccionarCliente') }}" class="nav-link text-secondary text-white text-center">
-                            <i class="bi bi-cart-fill mb-1" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
+                        <a href="{{ route('caja.seleccionarCliente') }}" class="nav-link text-secondary text-white fw-bold text-center">
+                            <i class="bi bi-cart-fill mb-1 nav-activo" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
                             </i>
                             Pedidos
                         </a>
@@ -141,7 +144,7 @@
                 <hr />
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="/" class="nav-link active color-rojo1" aria-current="page">
+                        <a href="/" class="nav-link link-body-emphasis hover-nav" aria-current="page">
                             <i class="bi bi-house-fill me-2" width="16" height="16" aria-hidden="true"></i>
                             Home
                         </a>
@@ -154,7 +157,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('caja.seleccionarCliente') }}" class="nav-link link-body-emphasis hover-nav">
+                        <a href="{{ route('caja.seleccionarCliente') }}" class="nav-link active color-rojo1">
                             <i class="bi bi-cart-fill me-2" width="16" height="16" aria-hidden="true"></i>
                             Pedidos
                         </a>
@@ -176,19 +179,21 @@
             </nav>
 
         
-          <main class="col-md-10 d-flex flex-column px-3 px-lg-10" style="height: 100vh; overflow-y: auto;">
-                <div class="container px-4 px-lg-5 mt-5 flex-grow-1 d-flex flex-column justify-content-between">
+            <!-- <main class="col-md-10 d-flex flex-column px-3 px-lg-10" style="height: 100vh; overflow-y: auto;"> -->
+            <main class="col-md-10 d-flex flex-column px-3 px-lg-10">
+                <!-- class="container col-md-8 col-lg-6" -->
+                <div class="container px-4 px-lg-4  col-lg-10 mt-5 flex-grow-1 d-flex flex-column justify-content-between gap-3">
                     
                     <!-- Encabezado -->
-                    <div class="mb-4">
-                        <h1 class="display-5 fw-bold text-body-emphasis lh-1 text-center">
-                            Crear Pedido
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h1 class="display-5 fw-bold text-body-emphasis lh-1">
+                            Pedido N° {{ $pedido->id }}
                         </h1>
-                        <h2 class="text-center">Cliente: {{ $pedido->cliente->nombre_cliente ?? 'Sin cliente' }} - Pedido # {{ $pedido->id }}</h2>
+                        <h2>Cliente: {{ $pedido->cliente->nombre_cliente ?? 'Sin cliente' }}</h2>
                     </div>
 
                     <!-- Mensajes (colapsables sin afectar espacio) -->
-                    <div style="min-height: 60px;">
+                    <div>
                         @if(session('success'))
                             <div class="alert alert-success mb-2">
                                 {{ session('success') }}
@@ -203,7 +208,7 @@
 
                     <!-- Agregar producto -->
                     <div class="mb-4">
-                        <h4>Agregar Producto</h4>
+                        <h5>Agregar Producto:</h5>
                         <form method="POST" action="{{ route('pedidoProducto.store', $pedido->id) }}">
                             @csrf
                             <div class="d-flex justify-content-between align-items-center gap-2">
@@ -222,7 +227,8 @@
                                     <input type="number" name="cantidad" class="form-control" placeholder="Cantidad" min="1" value="1" 
                                     style="width: 200px;" required>
                                 
-                                <button class="btn btn-success px-3" type="submit" style="width: 100px; white-space: nowrap;">Agregar</button>
+                                <button class="btn btn-success px-3" type="submit" style="width: 120px; white-space: nowrap;">
+                                    <i class="bi bi-plus-circle me-2"></i>Agregar</button>
                             </div>
                         </form>
                     </div>
@@ -234,83 +240,102 @@
                                 No hay productos agregados. Por favor, agregue al menos uno.
                             </div>
                         @else
-                        <h4>Productos en el Pedido</h4>
-                        <table class="table table-bordered">
-                            <thead>
+                        <!-- <h4>Productos en el Pedido</h4> -->
+                        <div class="table-responsive">
+                        <table class="table table-bordered align-middle table-hover shadow-sm">
+                            <thead class="table-light">
                                 <tr>
                                     <th>Producto</th>
                                     <th>Cantidad</th>
                                     <th>Imagen Referencial</th>
+                                    <th>Categoría</th>
                                     <th>Precio Unitario</th>
                                     <th>Total</th>
-                                    <th>Acciones</th>
+                                    <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($pedido->productos as $producto)
                                     <tr>
-                                        <td>{{ $producto->nombre_producto }}</td>
+                                        <td class="fw-semibold">{{ $producto->nombre_producto }}</td>
                                         <td>{{ $producto->pivot->cantidad }}</td>
                                         <td class="text-center align-middle">
                                             @if($producto->imagen)
-                                                <img src="{{$producto->imagen }}" alt="Imagen" width="70" class="rounded me-2">
+                                                <img src="{{$producto->imagen }}" alt="Imagen" width="50" class="rounded me-2">
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($producto->tipo)
+                                                {{$producto->tipo}}
                                             @endif
                                         </td>
                                         <td>${{ number_format($producto->pivot->precio_unitario, 2) }}</td>
                                         <td>${{ number_format($producto->pivot->cantidad * $producto->pivot->precio_unitario, 2) }}</td>
-                                        <td>
+                                        <td class="text-center">
                                             <form method="POST" action="{{ route('pedidoProducto.destroy', [$pedido->id, $producto->id]) }}" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-danger btn-sm" onclick="return confirm('¿Quitar este producto?')">Eliminar</button>
+                                                <button class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Quitar este producto?')">
+                                                    <i class="bi bi-trash3"></i> </button>
                                             </form>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
+        </div>
                         <h5>Total del pedido: ${{ number_format($pedido->total, 2) }}</h5>
                         @endif
                     </div>
 
                     <!-- Finalizar pedido -->
-                    <div class="flex-grow-1 overflow-auto">
-                        <form action="{{ route('caja.finalizarPedido', $pedido->id) }}" method="POST" onsubmit="return confirm('¿Deseas finalizar este pedido?');">
+                    <div class="flex-grow-1 ">
+                        <form action="{{ route('caja.finalizarPedido', $pedido->id) }}" method="POST" onsubmit="return confirm('¿Deseas finalizar este pedido? No podrá modificarlo luego.');">
                             @csrf
-                            <div class="d-flex align-items-center gap-2 mb-3">
-                                <h5 for="metodo_pago">Método de Pago:</h5>
-                                <select name="metodo_pago" class="form-control" style="max-width: 250px;" required>
-                                    <option value="">Seleccione</option>
-                                    <option value="Efectivo">Efectivo</option>
-                                    <option value="Tarjeta">Tarjeta</option>
-                                    <option value="Transferencia">Transferencia</option>
-                                </select>
+
+                            <div class="row mb-3">
+                                <!-- Método de Pago -->
+                                <div class="col-md-4">
+                                    <h5 for="metodo_pago" class="form-label">Método de Pago:</h5>
+                                    <select name="metodo_pago" class="form-control" required>
+                                        <option value="">Seleccione</option>
+                                        <option value="Efectivo">Efectivo</option>
+                                        <option value="Tarjeta">Tarjeta</option>
+                                        <option value="Transferencia">Transferencia</option>
+                                    </select>
+                                </div>
+
+                                <!-- Monto entregado -->
+                                <div class="col-md-4">
+                                    <h5 for="monto_entregado" class="form-label">Monto Entregado:</h5>
+                                    <input type="number" step="0.01" min="0" class="form-control" id="monto_entregado" name="monto_entregado" required value="0" >
+                                </div>
+
+                                <!-- Cambio calculado -->
+                                <div class="col-md-4">
+                                    <h5 for="cambio_mostrado" class="form-label">Cambio:</h5>
+                                    <input type="text" class="form-control" id="cambio_mostrado" readonly>
+                                </div>
                             </div>
-                            <!-- Monto entregado -->
-                            <div class="d-flex align-items-center gap-2 mb-3">
-                                <h6 for="monto_entregado">Monto entregado:</h6>
-                                <input type="number" step="0.01" min="0" class="form-control" id="monto_entregado" name="monto_entregado" required>
 
-                            <!-- Cambio calculado -->
-                                <h6 for="cambio">Cambio:</h6>
-                                <input type="text" class="form-control" id="cambio_mostrado" readonly>
-        </div>
 
-                            <div class="text-center mt-3 mb-5">
+                            <div class="text-center mt-5 mb-5">
                                 <button type="submit" class="btn btn-success px-5">
-                                    Finalizar Pedido
+                                    <i class="bi bi-check-circle me-2"></i>Finalizar Pedido
                                 </button>
                             </div>
                         </form>
                     </div>
 
+
                 </div>
             </main>
-
+    </div>
+</div>
 
             <!-- FOOTER -->
-            <div class="container color-rojo1">
-                <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top ">
+            <div class=" color-rojo1">
+                <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top px-0">
                     <div class="col-md-4 ms-4 d-flex align-items-center my-1">
                         <a href="/" class="d-flex align-items-center my-2 my-lg-0 text-white text-decoration-none">
                             <img src="https://victoriaplace.co.uk/wp-content/uploads/2024/12/white-and-black-logo@1080x-871x1024.png" height="40" />

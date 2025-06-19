@@ -17,8 +17,11 @@
             body {
                 font-family: 'Poppins', Arial, sans-serif;
             }
-            main{
-                height: 100vh;
+            
+            main {
+                min-height: calc(100vh - 178px);
+                padding-top: 2rem;
+                padding-bottom: 2rem;
             }
 
             .color-rojo1 {
@@ -92,8 +95,8 @@
                 </a>
                 <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                     <li>
-                        <a href="/" class="nav-link text-secondary text-white fw-bold text-center">
-                            <i class="bi bi-house-fill mb-1 nav-activo" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
+                        <a href="/" class="nav-link text-secondary text-white text-center">
+                            <i class="bi bi-house-fill mb-1" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
                             Home
                         </a>
 
@@ -105,8 +108,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('caja.seleccionarCliente') }}" class="nav-link text-secondary text-white text-center">
-                            <i class="bi bi-cart-fill mb-1" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
+                        <a href="{{ route('caja.seleccionarCliente') }}" class="nav-link text-secondary text-white fw-bold text-center">
+                            <i class="bi bi-cart-fill mb-1 nav-activo" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
                             </i>
                             Pedidos
                         </a>
@@ -141,7 +144,7 @@
                 <hr />
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="/" class="nav-link active color-rojo1" aria-current="page">
+                        <a href="/" class="nav-link link-body-emphasis hover-nav" aria-current="page">
                             <i class="bi bi-house-fill me-2" width="16" height="16" aria-hidden="true"></i>
                             Home
                         </a>
@@ -154,7 +157,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('caja.seleccionarCliente') }}" class="nav-link link-body-emphasis hover-nav">
+                        <a href="{{ route('caja.seleccionarCliente') }}" class="nav-link active color-rojo1">
                             <i class="bi bi-cart-fill me-2" width="16" height="16" aria-hidden="true"></i>
                             Pedidos
                         </a>
@@ -177,19 +180,20 @@
 
             <main class="col-md-10">
                 <div class="container px-4 px-lg-5 mt-5">
-                    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-5 text-center">
-                        Seleccionar Cliente
-                    </h1>
 
                     <form method="GET" id="form-cliente" action="" class="mb-5">
                         <div class="row justify-content-center">
                             <div class="col-md-8">
+                                <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-5 text-center">
+                                    Gestión de Pedidos
+                                </h1>
+                                <h5>Seleccione un cliente:</h5>
                                 <select name="cliente_id" class="form-control" onchange="verPedidosCliente(this.value)">
-                                    <option value=""> <em>Seleccione un cliente</em> </option>
+                                    <option value="">Escoja un cliente</option>
                                     @foreach($clientes as $cliente)
                                         <option value="{{ $cliente->id }}"
                                             {{ isset($clienteId) && $clienteId == $cliente->id ? 'selected' : '' }}>
-                                            {{ $cliente->nombre_cliente }} - {{$cliente->cedula}}
+                                            {{ $cliente->nombre_cliente }} - C.I. {{$cliente->cedula}}
                                         </option>
                                     @endforeach
                                 </select>
@@ -203,7 +207,7 @@
                                 @csrf
                                 <input type="hidden" name="cliente_id" value="{{ $clienteId }}">
                                 <button type="submit" class="btn btn-primary boton-rojo me-md-2 boton-rojo">
-                                    Crear Nuevo Pedido
+                                    <i class="bi bi-plus-circle me-2"></i>Crear Nuevo Pedido
                                 </button>
                             </form>
 
