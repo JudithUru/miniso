@@ -2,8 +2,8 @@
 @include('extras.asistente')
 
 @section('content')
-<div class="container">
-    <h2 class="mb-4 fw-bold">
+<div class="container col-md-8 col-lg-6">
+    <h2 class="fw-bold mb-4">
         <i class="bi bi-pencil-square text-warning"></i> Editar Producto
     </h2>
 
@@ -17,18 +17,19 @@
         </div>
     @endif
 
-    <div class="card shadow-sm p-4">
+    <div class="card shadow-sm border-0 p-4">
         <form action="{{ route('productos.update', $producto) }}" method="POST">
             @csrf
             @method('PUT')
 
+            {{-- Campos del formulario --}}
             @include('productos.form', ['producto' => $producto])
 
-            <div class="text-end">
-                <button type="submit" class="btn btn-warning">
-                    <i class="bi bi-arrow-repeat"></i> Actualizar
-                </button>
-            </div>
+<div class="mt-3 text-end">
+    <button type="submit" class="btn btn-danger w-100">
+        <i class="bi bi-check-circle"></i> Actualizar Producto
+    </button>
+</div>
         </form>
     </div>
 </div>
