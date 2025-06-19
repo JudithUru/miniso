@@ -19,7 +19,7 @@
             }
             
             main {
-                min-height: calc(100vh - 178px); 
+                min-height: calc(100vh - 178px);
                 padding-top: 2rem;
                 padding-bottom: 2rem;
             }
@@ -95,8 +95,8 @@
                 </a>
                 <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                     <li>
-                        <a href="/" class="nav-link text-secondary text-white fw-bold text-center">
-                            <i class="bi bi-house-fill mb-1 nav-activo" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
+                        <a href="/" class="nav-link text-secondary text-white text-center">
+                            <i class="bi bi-house-fill mb-1" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
                             Home
                         </a>
 
@@ -108,8 +108,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('caja.seleccionarCliente') }}" class="nav-link text-secondary text-white text-center">
-                            <i class="bi bi-cart-fill mb-1" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
+                        <a href="{{ route('caja.seleccionarCliente') }}" class="nav-link text-secondary text-white fw-bold text-center">
+                            <i class="bi bi-cart-fill mb-1 nav-activo" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
                             </i>
                             Pedidos
                         </a>
@@ -144,7 +144,7 @@
                 <hr />
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="/" class="nav-link active color-rojo1" aria-current="page">
+                        <a href="/" class="nav-link link-body-emphasis hover-nav" aria-current="page">
                             <i class="bi bi-house-fill me-2" width="16" height="16" aria-hidden="true"></i>
                             Home
                         </a>
@@ -157,7 +157,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('caja.seleccionarCliente') }}" class="nav-link link-body-emphasis hover-nav">
+                        <a href="{{ route('caja.seleccionarCliente') }}" class="nav-link active color-rojo1">
                             <i class="bi bi-cart-fill me-2" width="16" height="16" aria-hidden="true"></i>
                             Pedidos
                         </a>
@@ -241,8 +241,9 @@
                             </div>
                         @else
                         <!-- <h4>Productos en el Pedido</h4> -->
-                        <table class="table table-bordered">
-                            <thead>
+                        <div class="table-responsive">
+                        <table class="table table-bordered align-middle table-hover shadow-sm">
+                            <thead class="table-light">
                                 <tr>
                                     <th>Producto</th>
                                     <th>Cantidad</th>
@@ -256,7 +257,7 @@
                             <tbody>
                                 @foreach($pedido->productos as $producto)
                                     <tr>
-                                        <td>{{ $producto->nombre_producto }}</td>
+                                        <td class="fw-semibold">{{ $producto->nombre_producto }}</td>
                                         <td>{{ $producto->pivot->cantidad }}</td>
                                         <td class="text-center align-middle">
                                             @if($producto->imagen)
@@ -282,6 +283,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+        </div>
                         <h5>Total del pedido: ${{ number_format($pedido->total, 2) }}</h5>
                         @endif
                     </div>
