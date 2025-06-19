@@ -1,5 +1,5 @@
-@extends('layouts.app')
-
+@extends('layouts.appdashboard')
+@extends('extras.asistente')
 @section('content')
     <h2 class="fw-bold mb-4">Dashboard de Gestión</h2>
 

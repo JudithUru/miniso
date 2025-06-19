@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@include('extras.asistente')
 
 @section('content')
 <div class="container col-md-8 col-lg-6">
