@@ -101,7 +101,7 @@
 
                     </li>
                     <li>
-                        <a href="#" class="nav-link text-secondary text-white text-center">
+                        <a href="{{ route('dashboard') }}" class="nav-link text-secondary text-white text-center">
                             <i class="bi bi-bar-chart-fill mb-1" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
                             Dashboard
                         </a>
@@ -143,13 +143,13 @@
                 <hr />
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active color-rojo1" aria-current="page">
+                        <a href="/" class="nav-link active color-rojo1" aria-current="page">
                             <i class="bi bi-house-fill me-2" width="16" height="16" aria-hidden="true"></i>
                             Home
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link link-body-emphasis hover-nav">
+                        <a href="{{ route('dashboard') }}" class="nav-link link-body-emphasis hover-nav">
                             <i class="bi bi-bar-chart-fill me-2" width="16" height="16" aria-hidden="true">
                             </i>
                             Dashboard
