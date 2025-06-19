@@ -166,13 +166,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('productos.index') }}" class="nav-link active color-rojo1">
+                        <a href="{{route('productos.index') }}" class="nav-link link-body-emphasis hover-nav">
                             <i class="bi bi-grid-fill me-2" width="16" height="16" aria-hidden="true"></i>
                             Productos
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('clientes.index') }}" class="nav-link link-body-emphasis hover-nav">
+                        <a href="{{ route('clientes.index') }}" class="nav-link active color-rojo1">
                             <i class="bi bi-person-circle me-2" width="16" height="16" aria-hidden="true"></i>
                             Clientes
                         </a>
@@ -186,13 +186,13 @@
 
 
 
-<div class="container">
-    <h1>Crear Cliente</h1>
+<div class="container col-md-8 col-lg-6">
+    <h2 class="fw-bold mb-4">Crear Cliente</h2>
 
     @if ($errors->any())
         <div class="alert alert-danger">
-            <strong>Ups...</strong> Corrige los errores para continuar:
-            <ul>
+            <strong>Ups, algo salió mal:</strong>
+            <ul class="mb-0">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
@@ -205,30 +205,58 @@
 
         <div class="mb-3">
             <label for="nombre_cliente" class="form-label">Nombre</label>
-            <input type="text" name="nombre_cliente" id="nombre_cliente" class="form-control" required value="{{ old('nombre_cliente') }}">
+            <input
+                type="text"
+                name="nombre_cliente"
+                id="nombre_cliente"
+                class="form-control"
+                required
+                value="{{ old('nombre_cliente') }}">
         </div>
 
         <div class="mb-3">
             <label for="cedula" class="form-label">Cédula</label>
-            <input type="text" name="cedula" id="cedula" class="form-control" required value="{{ old('cedula') }}">
+            <input
+                type="text"
+                name="cedula"
+                id="cedula"
+                class="form-control"
+                required
+                value="{{ old('cedula') }}">
         </div>
 
         <div class="mb-3">
             <label for="correo_electronico" class="form-label">Correo electrónico</label>
-            <input type="email" name="correo_electronico" id="correo_electronico" class="form-control" required value="{{ old('correo_electronico') }}">
+            <input
+                type="email"
+                name="correo_electronico"
+                id="correo_electronico"
+                class="form-control"
+                required
+                value="{{ old('correo_electronico') }}">
         </div>
 
         <div class="mb-3">
             <label for="telefono" class="form-label">Teléfono</label>
-            <input type="text" name="telefono" id="telefono" class="form-control" value="{{ old('telefono') }}">
+            <input
+                type="text"
+                name="telefono"
+                id="telefono"
+                class="form-control"
+                value="{{ old('telefono') }}">
         </div>
 
-        <div class="text-center">
-        <button type="submit" class="btn btn-primary boton-rojo">Guardar Cliente</button>
-        <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Volver</a>
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-success w-100">
+                <i class="bi bi-check-circle"></i> Guardar Cliente
+            </button>
+            <a href="{{ route('clientes.index') }}" class="btn btn-secondary w-100">
+                Volver
+            </a>
         </div>
     </form>
 </div>
+
 
 
   </main>
