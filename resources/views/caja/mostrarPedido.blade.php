@@ -17,8 +17,10 @@
             body {
                 font-family: 'Poppins', Arial, sans-serif;
             }
-            main{
-                height: 100vh;
+            main {
+                min-height: calc(100vh - 178px); 
+                padding-top: 2rem;
+                padding-bottom: 2rem;
             }
 
             .color-rojo1 {
@@ -183,7 +185,7 @@
                 
                 
                 <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-3">
-                    <a href="{{ route('caja.seleccionarCliente') }}" class="btn btn-secondary">
+                    <a href="{{ route('caja.seleccionarCliente') }}" class="btn btn-primary boton-rojo">
                         ← Volver a Inicio Pedidos
                     </a>
 
@@ -191,7 +193,7 @@
                         <input type="hidden" name="cliente_id" value="{{ $clienteId }}">
 
                         <div class="d-flex flex-column">
-                            <label for="estado" class="form-label mb-0">Estado</label>
+                            <label for="estado" class="form-label mb-0 fw-semibold">Estado</label>
                             <select name="estado" id="estado" class="form-select" onchange="this.form.submit()">
                                 <option value="">Todos</option>
                                 <option value="Pendiente" {{ request('estado') === 'Pendiente' ? 'selected' : '' }}>Pendiente</option>
@@ -200,7 +202,7 @@
                         </div>
 
                         <div class="d-flex flex-column">
-                            <label for="orden" class="form-label mb-0">Ordenar por</label>
+                            <label for="orden" class="form-label mb-0 fw-semibold">Ordenar por</label>
                             <select name="orden" id="orden" class="form-select" onchange="this.form.submit()">
                                 <option value="desc" {{ request('orden') === 'desc' ? 'selected' : '' }}>Más reciente</option>
                                 <option value="asc" {{ request('orden') === 'asc' ? 'selected' : '' }}>Más antiguo</option>
@@ -212,38 +214,52 @@
                 @if($pedidos->isEmpty())
                     <p>Este cliente no tiene pedidos registrados.</p>
                 @else
-                    <table class="table table-bordered">
-                        <thead>
+                <div class="table-responsive">
+                    <table class="table table-bordered align-middle table-hover shadow-sm">
+                        <thead class="table-light">
                             <tr>
                                 <th>ID Pedido</th>
-                                <th>Fecha creacion</th>
-                                <th>Fecha última actualización</th>
+                                <th>Fecha de creacion</th>
+                                <th>Fecha de actualización</th>
                                 <th>Total</th>
                                 <th>Estado</th>
                                 <th>Método de Pago</th>
-                                <th>Acciones</th>
+                                <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($pedidos as $pedido)
                                 <tr>
-                                    <td>{{ $pedido->id }}</td>
+                                    <td class="fw-semibold">{{ $pedido->id }}</td>
                                     <td>{{ $pedido->created_at }}</td>
                                     <td>{{ $pedido->updated_at }}</td>
                                     <td>${{ number_format($pedido->total, 2) }}</td>
-                                    <td>{{ $pedido->estado }}</td>
-                                    <td>{{ $pedido->metodo_pago ?? 'No definido' }}</td>
                                     <td>
+                                    @if($pedido->estado === 'Finalizado')
+                                    <span class="badge bg-success">{{ $pedido->estado }}</span>
+                                @else
+                                    <span class="badge bg-warning text-dark">{{ $pedido->estado }}</span>
+                                @endif
+                                    </td>
+                                    <td>{{ $pedido->metodo_pago ?? 'No definido' }}</td>
+                                    <td class="text-center">
                                         @if ($pedido->estado !== 'Finalizado')
-                                            <a href="{{ route('caja.pedido', $pedido->id) }}" class="btn btn-primary btn-sm">Editar</a>
+                                            <!-- <a href="{{ route('caja.pedido', $pedido->id) }}" class="btn btn-primary btn-sm">Editar</a> --> 
+                                            <a href="{{ route('caja.pedido', $pedido->id) }}" class="btn btn-sm btn-outline-warning me-1">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
                                         @else
-                                            <button class="btn btn-secondary btn-sm" disabled>Finalizado</button>
+                                            <!-- <button class="btn btn-secondary btn-sm" disabled>Finalizado</button> -->
+                                            <button class="btn btn-sm btn-secondary" disabled>
+                                                <i class="bi bi-check-lg"></i> 
+                                            </button>
                                         @endif
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+                </div>
                 @endif
             </div>
 

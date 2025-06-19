@@ -189,7 +189,7 @@
                                     @foreach($clientes as $cliente)
                                         <option value="{{ $cliente->id }}"
                                             {{ isset($clienteId) && $clienteId == $cliente->id ? 'selected' : '' }}>
-                                            {{ $cliente->nombre_cliente }} - {{$cliente->cedula}}
+                                            {{ $cliente->nombre_cliente }} - C.I. {{$cliente->cedula}}
                                         </option>
                                     @endforeach
                                 </select>
@@ -203,7 +203,7 @@
                                 @csrf
                                 <input type="hidden" name="cliente_id" value="{{ $clienteId }}">
                                 <button type="submit" class="btn btn-primary boton-rojo me-md-2 boton-rojo">
-                                    Crear Nuevo Pedido
+                                    <i class="bi bi-plus-circle me-2"></i>Crear Nuevo Pedido
                                 </button>
                             </form>
 
