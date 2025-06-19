@@ -139,8 +139,9 @@ main {
 
                     </li>
                     <li>
-                        <a href="{{ route('dashboard') }}" class="nav-link text-secondary text-white text-center">
-                            <i class="bi bi-bar-chart-fill mb-1" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
+                        <a href="{{ route('dashboard') }}" class="nav-link text-secondary text-white fw-bold text-center">
+                            <i class="bi bi-bar-chart-fill mb-1
+                            nav-activo" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
                             Dashboard
                         </a>
                     </li>
@@ -152,8 +153,8 @@ main {
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('productos.index') }}" class="nav-link text-secondary text-white fw-bold text-center">
-                            <i class="bi bi-grid-fill mb-1 nav-activo" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
+                        <a href="{{route('productos.index') }}" class="nav-link text-secondary text-white text-center">
+                            <i class="bi bi-grid-fill mb-1" style="font-size: 24px; display: block; margin: 0 auto;" aria-hidden="true"></i>
                             Productos
                         </a>
                     </li>
@@ -187,7 +188,7 @@ main {
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('dashboard') }}" class="nav-link link-body-emphasis">
+                        <a href="{{ route('dashboard') }}" class="nav-link active color-rojo1">
                             <i class="bi bi-bar-chart-fill me-2" width="16" height="16" aria-hidden="true">
                             </i>
                             Dashboard
@@ -200,7 +201,7 @@ main {
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('productos.index') }}" class="nav-link active color-rojo1">
+                        <a href="{{route('productos.index') }}" class="nav-link link-body-emphasis">
                             <i class="bi bi-grid-fill me-2" width="16" height="16" aria-hidden="true"></i>
                             Productos
                         </a>

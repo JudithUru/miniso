@@ -1,5 +1,7 @@
-@extends('layouts.app')
 
+
+@extends('layouts.app')
+ @include('extras.asistente')
 @section('content')
 <div class="container">
     <h2 class="fw-bold mb-4">📦 Lista de Productos</h2>
