@@ -166,13 +166,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('productos.index') }}" class="nav-link active color-rojo1">
+                        <a href="{{route('productos.index') }}" class="nav-link link-body-emphasis hover-nav">
                             <i class="bi bi-grid-fill me-2" width="16" height="16" aria-hidden="true"></i>
                             Productos
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('clientes.index') }}" class="nav-link link-body-emphasis hover-nav">
+                        <a href="{{ route('clientes.index') }}" class="nav-link active color-rojo1">
                             <i class="bi bi-person-circle me-2" width="16" height="16" aria-hidden="true"></i>
                             Clientes
                         </a>
@@ -186,42 +186,81 @@
 
 
 
- <div class="container">
-    <h1>Editar Cliente</h1>
-    <form action="{{ route('clientes.update', $cliente->id) }}" method="POST">
-        @csrf
-        @method('PUT')
+ <div class="container col-md-8 col-lg-6">
+    <h2 class="fw-bold mb-4">
+        <i class="bi bi-pencil-square text-warning"></i> Editar Cliente
+    </h2>
 
-        <div class="mb-3">
-            <label for="nombre_cliente" class="form-label">Nombre</label>
-            <input type="text" name="nombre_cliente" id="nombre_cliente" class="form-control" required
-                value="{{ old('nombre_cliente', $cliente->nombre_cliente ?? '') }}">
+    @if($errors->any())
+        <div class="alert alert-danger">
+            <ul class="mb-0">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
+    @endif
 
-        <div class="mb-3">
-            <label for="cedula" class="form-label">Cédula</label>
-            <input type="text" name="cedula" id="cedula" class="form-control" required
-                value="{{ old('cedula', $cliente->cedula ?? '') }}">
-        </div>
+    <div class="card shadow-sm border-0 p-4">
+        <form action="{{ route('clientes.update', $cliente->id) }}" method="POST">
+            @csrf
+            @method('PUT')
 
-        <div class="mb-3">
-            <label for="correo_electronico" class="form-label">Correo electrónico</label>
-            <input type="email" name="correo_electronico" id="correo_electronico" class="form-control" required
-                value="{{ old('correo_electronico', $cliente->correo_electronico ?? '') }}">
-        </div>
+            <div class="mb-3">
+                <label for="nombre_cliente" class="form-label">Nombre</label>
+                <input
+                    type="text"
+                    name="nombre_cliente"
+                    id="nombre_cliente"
+                    class="form-control"
+                    required
+                    value="{{ old('nombre_cliente', $cliente->nombre_cliente ?? '') }}">
+            </div>
 
-        <div class="mb-3">
-            <label for="telefono" class="form-label">Teléfono</label>
-            <input type="text" name="telefono" id="telefono" class="form-control"
-                value="{{ old('telefono', $cliente->telefono ?? '') }}">
-        </div>
+            <div class="mb-3">
+                <label for="cedula" class="form-label">Cédula</label>
+                <input
+                    type="text"
+                    name="cedula"
+                    id="cedula"
+                    class="form-control"
+                    required
+                    value="{{ old('cedula', $cliente->cedula ?? '') }}">
+            </div>
 
-        <div class="text-center">
-            <button type="submit" class="btn btn-primary boton-rojo">Guardar Cliente</button>
-            <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Volver</a>
-        </div>
-    </form>
+            <div class="mb-3">
+                <label for="correo_electronico" class="form-label">Correo electrónico</label>
+                <input
+                    type="email"
+                    name="correo_electronico"
+                    id="correo_electronico"
+                    class="form-control"
+                    required
+                    value="{{ old('correo_electronico', $cliente->correo_electronico ?? '') }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input
+                    type="text"
+                    name="telefono"
+                    id="telefono"
+                    class="form-control"
+                    value="{{ old('telefono', $cliente->telefono ?? '') }}">
+            </div>
+
+            <div class="mt-3 text-end">
+                <button type="submit" class="btn btn-danger w-100">
+                    <i class="bi bi-check-circle"></i> Actualizar Cliente
+                </button>
+                <a href="{{ route('clientes.index') }}" class="btn btn-secondary mt-2 w-100">
+                    Volver
+                </a>
+            </div>
+        </form>
+    </div>
 </div>
+
 
 
 

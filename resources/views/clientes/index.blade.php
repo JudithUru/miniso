@@ -166,13 +166,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('productos.index') }}" class="nav-link active color-rojo1">
+                        <a href="{{route('productos.index') }}" class="nav-link link-body-emphasis hover-nav">
                             <i class="bi bi-grid-fill me-2" width="16" height="16" aria-hidden="true"></i>
                             Productos
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('clientes.index') }}" class="nav-link link-body-emphasis hover-nav">
+                        <a href="{{ route('clientes.index') }}" class="nav-link active color-rojo1">
                             <i class="bi bi-person-circle me-2" width="16" height="16" aria-hidden="true"></i>
                             Clientes
                         </a>
@@ -183,36 +183,49 @@
 
 
             <main class="col-md-10">
-    <div class="container">
-        <h1 class="mt-3 mb-3">Lista de Clientes</h1>
-        <a href="{{ route('clientes.create') }}" class="btn btn-primary mb-3 boton-rojo">Nuevo Cliente</a>
+                <div class="container" style="max-width: 98%;">
+        <h2 class="fw-bold mb-4">🧑 Lista de Clientes</h2>
 
-        @if(session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @endif
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
 
-        <table class="table table-bordered">
-            <thead>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <a href="{{ route('clientes.create') }}" class="btn btn-primary">
+            <i class="bi bi-person-plus-fill"></i> Nuevo Cliente
+        </a>
+        <span class="text-muted">Total: {{ $clientes->count() }} clientes</span>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered align-middle table-hover shadow-sm">
+            <thead class="table-light">
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Cédula</th>
-                    <th>Acciones</th>
+                    <th class="text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($clientes as $cliente)
                     <tr>
                         <td>{{ $cliente->id }}</td>
-                        <td>{{ $cliente->nombre_cliente }}</td>
+                        <td class="fw-semibold">{{ $cliente->nombre_cliente }}</td>
                         <td>{{ $cliente->cedula }}</td>
-                        <td>
-                            <a href="{{ route('clientes.show', $cliente->id) }}" class="btn btn-info btn-sm">Ver</a>
-                            <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-warning btn-sm">Editar</a>
+                        <td class="text-center">
+                            <a href="{{ route('clientes.show', $cliente->id) }}" class="btn btn-sm btn-outline-info me-1">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                            <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-sm btn-outline-warning me-1">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
                             <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro que deseas eliminar este cliente?')">Eliminar</button>
+                                <button class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Seguro que deseas eliminar este cliente?')">
+                                    <i class="bi bi-trash3"></i>
+                                </button>
                             </form>
                         </td>
                     </tr>
@@ -220,6 +233,8 @@
             </tbody>
         </table>
     </div>
+</div>
+
 
      </main>
 

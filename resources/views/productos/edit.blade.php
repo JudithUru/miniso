@@ -25,11 +25,14 @@
             {{-- Campos del formulario --}}
             @include('productos.form', ['producto' => $producto])
 
-<div class="mt-3 text-end">
-    <button type="submit" class="btn btn-danger w-100">
-        <i class="bi bi-check-circle"></i> Actualizar Producto
-    </button>
-</div>
+         <div class="mt-3 text-end">
+                <button type="submit" class="btn btn-danger w-100">
+                    <i class="bi bi-check-circle"></i> Actualizar Productos
+                </button>
+                <a href="{{ route('productos.index') }}" class="btn btn-secondary mt-2 w-100">
+                    Volver
+                </a>
+            </div>
         </form>
     </div>
 </div>

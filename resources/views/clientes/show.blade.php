@@ -166,13 +166,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('productos.index') }}" class="nav-link active color-rojo1">
+                        <a href="{{route('productos.index') }}" class="nav-link link-body-emphasis hover-nav">
                             <i class="bi bi-grid-fill me-2" width="16" height="16" aria-hidden="true"></i>
                             Productos
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('clientes.index') }}" class="nav-link link-body-emphasis hover-nav">
+                        <a href="{{ route('clientes.index') }}" class="nav-link active color-rojo1">
                             <i class="bi bi-person-circle me-2" width="16" height="16" aria-hidden="true"></i>
                             Clientes
                         </a>
@@ -186,17 +186,28 @@
 
 
 
-<div class="container">
-    <h1>Detalle del Cliente</h1>
+<div class="container col-md-8 col-lg-6">
+    <h2 class="fw-bold mb-4">
+        <i class="bi bi-info-circle text-info"></i> Detalle del Cliente
+    </h2>
 
-    <p><strong>Nombre:</strong> {{ $cliente->nombre_cliente }}</p>
-    <p><strong>Cédula:</strong> {{ $cliente->cedula }}</p>
-    <p><strong>Correo electrónico:</strong> {{ $cliente->correo_electronico }}</p>
-    <p><strong>Teléfono:</strong> {{ $cliente->telefono ?? 'No definido' }}</p>
+    <div class="card shadow-sm border-0 p-4">
+        <p><strong>Nombre:</strong> {{ $cliente->nombre_cliente }}</p>
+        <p><strong>Cédula:</strong> {{ $cliente->cedula }}</p>
+        <p><strong>Correo electrónico:</strong> {{ $cliente->correo_electronico }}</p>
+        <p><strong>Teléfono:</strong> {{ $cliente->telefono ?? 'No definido' }}</p>
 
-    <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-warning">Editar</a>
-    <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Volver a la lista</a>
+        <div class="mt-4 d-flex gap-2">
+            <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-warning flex-fill">
+                <i class="bi bi-pencil-square"></i> Editar
+            </a>
+            <a href="{{ route('clientes.index') }}" class="btn btn-secondary flex-fill">
+                <i class="bi bi-arrow-left-circle"></i> Volver a la lista
+            </a>
+        </div>
+    </div>
 </div>
+
 
     
   </main>

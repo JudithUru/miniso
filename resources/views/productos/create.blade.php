@@ -67,9 +67,17 @@
             <input type="url" name="imagen" class="form-control" placeholder="https://...">
         </div>
 
-        <button type="submit" class="btn btn-success w-100">
-            <i class="bi bi-check-circle"></i> Guardar Producto
-        </button>
+    
+
+
+                <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-success w-100">
+                <i class="bi bi-check-circle"></i> Guardar Producto
+            </button>
+            <a href="{{ route('productos.index') }}" class="btn btn-secondary w-100">
+                Volver
+            </a>
+        </div>
     </form>
 </div>
 @endsection
