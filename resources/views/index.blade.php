@@ -1,4 +1,5 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -128,16 +129,7 @@
             </div>
         </div>
     </div>
-</div>
 
-<<<<<<< HEAD
-<div class="container py-5 px-4 px-lg-5" id="hanging-icons">
-    <h2 class="pb-2 border-bottom">Funcionalidades</h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-        <div class="col d-flex align-items-start">
-            <div class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                <i class="bi bi-bag-fill" aria-hidden="true"></i>
-=======
     <!-- LAYOUT: Sidebar y Hero al lado -->
     <div class="container-fluid">
         <div class="row">
@@ -275,34 +267,42 @@
                     </div>
 
                 </footer>
->>>>>>> origin/main
             </div>
-            <div>
-                <h3 class="fs-2 text-body-emphasis">Pedidos</h3>
-                <p>Crea y visualiza órdenes. No se pueden editar ni borrar para mantener la integridad de los registros.</p>
-                <a href="{{ route('caja.seleccionarCliente') }}" class="btn btn-primary">Ver Pedidos</a>
-            </div>
-        </div>
-        <div class="col d-flex align-items-start">
-            <div class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                <i class="bi bi-person-fill" aria-hidden="true"></i>
-            </div>
-            <div>
-                <h3 class="fs-2 text-body-emphasis">Clientes</h3>
-                <p>Puedes añadir, modificar y eliminar clientes para mantener tu base actualizada.</p>
-                <a href="{{ route('clientes.index') }}" class="btn btn-primary">Ver Clientes</a>
-            </div>
-        </div>
-        <div class="col d-flex align-items-start">
-            <div class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                <i class="bi bi-heart-fill" aria-hidden="true"></i>
-            </div>
-            <div>
-                <h3 class="fs-2 text-body-emphasis">Productos</h3>
-                <p>Agrega, edita y elimina productos para mantener tu catálogo actualizado.</p>
-                <a href="{{ route('productos.index') }}" class="btn btn-primary">Ver Productos</a>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+
+            <!-- SVG symbols -->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+
+                <symbol id="speedometer2" viewBox="0 0 16 16">
+                    <path
+                        d="M8 4a.5.5 0 0 1 .5.5v3.707l2.349 1.175a.5.5 0 1 1-.448.894l-2.5-1.25A.5.5 0 0 1 7.5 8V4.5A.5.5 0 0 1 8 4z" />
+                </symbol>
+                <symbol id="table" viewBox="0 0 16 16">
+                    <path d="M0 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3zm1 2v6h14V5H1z" />
+                </symbol>
+                <symbol id="grid" viewBox="0 0 16 16">
+                    <path
+                        d="M3 3h2v2H3V3zm0 3h2v2H3V6zm0 3h2v2H3v-2zm3-6h2v2H6V3zm0 3h2v2H6V6zm0 3h2v2H6v-2zm3-6h2v2h-2V3zm0 3h2v2h-2V6zm0 3h2v2h-2v-2z" />
+                </symbol>
+                <symbol id="people-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM14 8a6 6 0 1 1-12 0 6 6 0 0 1 12 0z" />
+                </symbol>
+                <symbol id="toggles2" viewBox="0 0 16 16">
+                    <path
+                        d="M4 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM8 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM12 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                </symbol>
+                <symbol id="cpu-fill" viewBox="0 0 16 16">
+                    <path d="M4 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z" />
+                </symbol>
+                <symbol id="tools" viewBox="0 0 16 16">
+                    <path d="M1 2l4 4-3 3-4-4v-3h3zM11 12l4-4-3-3-4 4v3h3z" />
+                </symbol>
+
+            </svg>
+
+
+
+</body>
+
+</html>
