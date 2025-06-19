@@ -1,3 +1,4 @@
+@extends('extras.asistente')
 <!DOCTYPE html>
 <html lang="en">
 
